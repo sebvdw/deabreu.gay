@@ -17,6 +17,15 @@ img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; filte
 .floaty-disk { right: -12%; bottom: 18%; background: var(--orange); animation: bob-b 3.8s ease-in-out infinite; }
 .floaty-computer { left: -12%; bottom: 14%; background: var(--blue); animation: spin-b 4.2s ease-in-out infinite reverse; }
 .floaty-star { left: 42%; bottom: -11%; color: var(--orange); font-size: 2.7rem; animation: star-pop 1.4s ease-in-out infinite alternate; }
+.stack-zone { width: min(88vw, 520px); margin-top: 150px; text-align: center; }
+.stack-zone h2 { margin: 0 0 28px; color: var(--blue); font: 700 clamp(2.3rem, 7vw, 4.5rem)/.9 'Space Grotesk', sans-serif; letter-spacing: -.09em; transform: rotate(-2deg); }
+.stack-game { position: relative; padding: 14px 14px 18px; border: 2px solid var(--blue); background: #201b17; box-shadow: 12px 12px 0 var(--blue); }
+.stack-canvas { width: 100%; height: 360px; overflow: hidden; cursor: pointer; }
+.stack-canvas canvas { display: block; width: 100%; height: 100%; }
+.stack-status { position: absolute; top: 24px; left: 27px; z-index: 2; color: var(--ink); font: 500 .72rem 'DM Mono', monospace; letter-spacing: .04em; text-transform: uppercase; pointer-events: none; }
+#drop-button { border: 0; padding: 12px 18px; color: var(--paper); background: var(--orange); cursor: pointer; font: 700 .78rem 'DM Mono', monospace; text-transform: uppercase; transition: transform .15s ease, background .15s ease; }
+#drop-button:hover { background: var(--ink); transform: rotate(-2deg) scale(1.04); }
+#drop-button:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
 @keyframes headline-wobble { 0%, 100% { transform: rotate(-1deg) scale(1); } 50% { transform: rotate(1deg) scale(1.025); } }
 @keyframes orbit-float { 0%, 100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } }
 @keyframes outline-spin { 0%, 100% { border-radius: 2% 8% 4% 7%; } 50% { border-radius: 8% 2% 9% 3%; } }
@@ -31,6 +40,8 @@ img { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; filte
   .floaty-heart { left: -6%; }
   .floaty-spark, .floaty-disk { right: -5%; }
   .floaty-computer { left: -6%; }
+  .stack-zone { margin-top: 120px; }
+  .stack-canvas { height: 300px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
