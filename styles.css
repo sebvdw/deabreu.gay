@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #f8f2e9;
+  --muted: #bdb3a7;
+  --paper: #17130f;
+  --line: rgba(248, 242, 233, .16);
+  --accent: #f0a35b;
+  --blue: #8db9cc;
+  --cream: #ece1ce;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  font-family: 'Space Grotesk', sans-serif;
+  transition: background .35s ease, color .35s ease;
+}
+body.light {
+  --ink: #231b17;
+  --muted: #766b62;
+  --paper: #f4eee4;
+  --line: rgba(35, 27, 23, .17);
+  --accent: #dd6e39;
+  --blue: #7daabb;
+  --cream: #f8e8c9;
+}
+.page-shell { max-width: 1180px; min-height: 100vh; margin: auto; padding: 0 6vw; display: flex; flex-direction: column; }
+.site-header { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
+.wordmark { color: var(--ink); font-size: 1.5rem; font-weight: 700; letter-spacing: -.12em; text-decoration: none; }
+.wordmark span { color: var(--accent); }
+.theme-toggle { border: 1px solid var(--line); border-radius: 100px; color: var(--ink); background: transparent; cursor: pointer; display: flex; align-items: center; gap: 9px; padding: 8px 13px; font: 500 .68rem 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .07em; }
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+.toggle-icon { font-size: 1rem; line-height: .8; }
+.hero { max-width: 760px; padding: clamp(80px, 15vw, 170px) 0 150px; }
+.eyebrow, .section-number, .site-footer { color: var(--muted); font: 500 .7rem 'DM Mono', monospace; letter-spacing: .08em; text-transform: uppercase; }
+.eyebrow { display: flex; align-items: center; gap: 10px; margin: 0 0 28px; }
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
+h1 { margin: 0; color: var(--ink); font-size: clamp(3.8rem, 10vw, 8.8rem); font-weight: 500; line-height: .92; letter-spacing: -.09em; }
+h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; letter-spacing: -.1em; }
+.intro { max-width: 390px; margin: 36px 0 28px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.45; }
+.text-link { color: var(--ink); font: 500 .8rem 'DM Mono', monospace; letter-spacing: .04em; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 5px; }
+.text-link span { color: var(--accent); margin-left: 5px; }
+.text-link:hover { color: var(--accent); }
+.notes { padding-bottom: 140px; }
+.section-heading { display: flex; align-items: baseline; gap: 20px; border-top: 1px solid var(--line); padding-top: 18px; margin-bottom: 32px; }
+.section-heading h2 { margin: 0; font-size: 1.1rem; font-weight: 500; letter-spacing: -.03em; }
+.section-number { color: var(--accent); }
+.note-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.note-card { min-height: 280px; padding: 25px; color: #17130f; display: flex; flex-direction: column; justify-content: space-between; transition: transform .25s ease; }
+.note-card:hover { transform: translateY(-6px) rotate(-1deg); }
+.note-card--orange { background: var(--accent); }
+.note-card--blue { background: var(--blue); }
+.note-card--cream { background: var(--cream); }
+.card-mark { font-size: 1.45rem; }
+.note-card h3 { margin: 45px 0 14px; font-size: clamp(1.45rem, 3vw, 2rem); font-weight: 500; line-height: .98; letter-spacing: -.07em; }
+.note-card p { max-width: 230px; margin: 0; font-size: .88rem; line-height: 1.4; }
+.site-footer { display: flex; justify-content: space-between; border-top: 1px solid var(--line); padding: 22px 0 28px; margin-top: auto; }
+.site-footer p { margin: 0; }
+.footer-note { color: var(--accent); }
+
+@media (max-width: 680px) {
+  .page-shell { padding: 0 22px; }
+  .site-header { padding: 22px 0; }
+  .hero { padding: 92px 0 105px; }
+  .note-grid { grid-template-columns: 1fr; }
+  .note-card { min-height: 235px; }
+  .site-footer { font-size: .62rem; }
+}
