@@ -32,6 +32,8 @@ body.light {
 .site-header { display: flex; justify-content: space-between; align-items: center; padding: 28px 0; }
 .wordmark { color: var(--ink); font-size: 1.5rem; font-weight: 700; letter-spacing: -.12em; text-decoration: none; }
 .wordmark span { color: var(--accent); }
+.topline { position: absolute; left: 50%; transform: translateX(-50%); margin: 0; color: var(--accent); font: 500 .75rem 'DM Mono', monospace; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; animation: text-bob 3s ease-in-out infinite; }
+.topline span { display: inline-block; margin-left: 5px; animation: twinkle 1.2s ease-in-out infinite alternate; }
 .theme-toggle { border: 1px solid var(--line); border-radius: 100px; color: var(--ink); background: transparent; cursor: pointer; display: flex; align-items: center; gap: 9px; padding: 8px 13px; font: 500 .68rem 'DM Mono', monospace; text-transform: uppercase; letter-spacing: .07em; }
 .theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
 .toggle-icon { font-size: 1rem; line-height: .8; }
@@ -41,6 +43,11 @@ body.light {
 .status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 15%, transparent); }
 h1 { margin: 0; color: var(--ink); font-size: clamp(3.8rem, 10vw, 8.8rem); font-weight: 500; line-height: .92; letter-spacing: -.09em; }
 h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; letter-spacing: -.1em; }
+.mainframe-portrait { position: relative; width: min(100%, 430px); margin: 48px auto 34px; transform: rotate(2deg); animation: portrait-float 5s ease-in-out infinite; }
+.mainframe-portrait::before { position: absolute; inset: 10px -10px -10px 10px; z-index: -1; border: 1px solid var(--accent); content: ''; transform: rotate(-4deg); }
+.mainframe-portrait img { display: block; width: 100%; aspect-ratio: 3 / 4; border: 8px solid var(--ink); object-fit: cover; filter: saturate(.82) contrast(1.08); box-shadow: 12px 14px 0 var(--accent); }
+.mainframe-portrait figcaption { margin-top: 18px; color: var(--muted); font: .68rem 'DM Mono', monospace; letter-spacing: .04em; text-transform: uppercase; }
+.portrait-sticker { position: absolute; right: -35px; top: 24px; z-index: 2; padding: 9px 11px; color: #17130f; background: var(--blue); font: 500 .62rem 'DM Mono', monospace; line-height: 1.2; text-transform: uppercase; transform: rotate(8deg); box-shadow: 4px 5px 0 var(--ink); }
 .intro { max-width: 390px; margin: 36px 0 28px; color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.25rem); line-height: 1.45; }
 .text-link { color: var(--ink); font: 500 .8rem 'DM Mono', monospace; letter-spacing: .04em; text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 5px; }
 .text-link span { color: var(--accent); margin-left: 5px; }
@@ -62,9 +69,21 @@ h1 em { color: var(--accent); font-family: Georgia, serif; font-weight: 400; let
 .site-footer p { margin: 0; }
 .footer-note { color: var(--accent); }
 
+@keyframes portrait-float { 0%, 100% { transform: rotate(2deg) translateY(0); } 50% { transform: rotate(-1deg) translateY(-9px); } }
+@keyframes text-bob { 0%, 100% { letter-spacing: .04em; } 50% { letter-spacing: .12em; } }
+@keyframes twinkle { from { transform: scale(.8) rotate(0); } to { transform: scale(1.3) rotate(18deg); } }
+@keyframes card-wiggle { 0%, 100% { transform: translateY(-6px) rotate(-1deg); } 50% { transform: translateY(-9px) rotate(1deg); } }
+.note-card:hover { animation: card-wiggle .45s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+
 @media (max-width: 680px) {
   .page-shell { padding: 0 22px; }
   .site-header { padding: 22px 0; }
+  .topline { position: static; order: 2; transform: none; font-size: .6rem; }
+  .theme-toggle { order: 3; }
   .hero { padding: 92px 0 105px; }
   .note-grid { grid-template-columns: 1fr; }
   .note-card { min-height: 235px; }
